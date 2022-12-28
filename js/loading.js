@@ -13,7 +13,7 @@ function typeMsg(massage, ele){
       clearInterval(type)
       enter.next()
     }
-  }, 10)
+  }, 100)
 }
 
 typeMsg('Welcome to my website.',intro)

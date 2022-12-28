@@ -51,7 +51,7 @@ const d = new Date();
 let year = d.getFullYear();
 experience.textContent = year - 2020
 
-// top : 475 , -330
+// skills animation
 const skills =  document.querySelector('.skills')
 about.addEventListener('scroll',_=>{
   if(skills.getBoundingClientRect().top <= 475 

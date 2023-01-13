@@ -89,10 +89,7 @@ body {
   /* start sections */
   /* end sections */
   /* start about */
-  /* end servise */
-  /* end about */
-  /* start portfolio */
-  /* end portfolio */
+  /* old design */
 }
 @media (max-width: 700px) {
   body {
@@ -228,6 +225,7 @@ body i::before {
   cursor: pointer;
 }
 body .social i:hover,
+body .servises i:hover,
 body .otherSocial:hover {
   color: var(--background-color);
   background-color: #fff !important;
@@ -289,7 +287,7 @@ body section.page {
   padding: 7vh 4vw 3vh;
   background-color: #000;
   z-index: 2;
-  overflow-y: scroll;
+  overflow: hidden overlay;
   transform: translateY(100%);
 }
 body section.page .close {
@@ -297,6 +295,7 @@ body section.page .close {
   top: 0%;
   right: 2%;
   font-size: 3em;
+  z-index: 9;
 }
 body section.page .close:hover {
   transform: scale(1.5);
@@ -310,7 +309,8 @@ body #about {
   display: block;
   /* start skills */
   /* end skills */
-  /* start servise */
+  /* start servises */
+  /* new design */
 }
 body #about > section {
   width: 100%;
@@ -494,62 +494,148 @@ body #about .skills.move i:nth-child(even) {
     -o-transform: translateY(-15vh);
   }
 }
-body #about .servise {
+body #about .servises {
   width: 100%;
   height: 50%;
-  flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
+  position: relative;
+  overflow-x: hidden;
 }
-body #about .servise h2 {
-  font-size: 5em;
-  letter-spacing: 1vw;
-}
-body #about .servise > div {
-  width: 100%;
+body #about .servises h2 {
+  --width:4rem;
+  height: calc(var(--width) * 2);
+  padding: 1rem 0 1rem 2.5rem;
   display: flex;
-  justify-content: space-evenly;
-}
-body #about .servise > div .serve {
-  width: 40%;
-  aspect-ratio: 1.6/1;
-  padding: 0 4%;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
-  box-shadow: 0 0 2px 2px #fff;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+  text-align: center;
+  text-shadow: 0 0 5px #fff;
+  color: #000;
+  background-color: #000;
+  font-size: 5em;
+  letter-spacing: 3rem;
+  border-radius: var(--width);
+  cursor: pointer;
+  z-index: 1;
+  -webkit-border-radius: var(--width);
+  -moz-border-radius: var(--width);
+  -ms-border-radius: var(--width);
+  -o-border-radius: var(--width);
 }
-body #about .servise > div .serve h3 {
-  font-size: 2.5em;
-  letter-spacing: 0.6vw;
-  display: inline-block;
+body #about .servises h2.active {
+  width: calc(var(--width) * 2) !important;
+  padding: 2.2rem;
+  letter-spacing: 5rem;
+  color: #000;
+  background-color: #fff;
+  overflow: hidden;
 }
-body #about .servise > div .serve h3 i {
-  font-size: 1em;
-  display: inline-block !important;
+body #about .servises h2:hover {
+  color: #000;
+  background-color: #fff;
 }
-body #about .servise > div .serve p {
-  font-size: 1.8em;
-  letter-spacing: 0.5vw;
-  line-height: 25px;
+body #about .servises i {
+  padding: 1.4vw;
+  background-color: var(--background-color);
+  z-index: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+body #about .serve {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 3;
+  -webkit-transform: translate(-50%, -50%) scale(0);
+  -moz-transform: translate(-50%, -50%) scale(0);
+  -ms-transform: translate(-50%, -50%) scale(0);
+  -o-transform: translate(-50%, -50%) scale(0);
+}
+body #about .serve .content {
+  width: 80vw;
+  height: 90vh;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1vh 3vw;
+  background-color: #1b1b1b;
+  border-radius: 2vw;
+  -webkit-border-radius: 2vw;
+  -moz-border-radius: 2vw;
+  -ms-border-radius: 2vw;
+  -o-border-radius: 2vw;
+}
+body #about .serve .content i.popup {
+  top: 6%;
+  right: 11%;
+}
+body #about .serve .content h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  letter-spacing: 1rem;
+}
+body #about .serve .content h2 i {
+  font-size: inherit;
+}
+body #about .serve .content p {
+  font-size: 2rem;
+  letter-spacing: 0.8rem;
+  line-height: 4vh;
   text-align: center;
 }
-body section.portfolio {
+body #about .serve .content dl {
+  letter-spacing: 0.5rem;
+  line-height: 3vh;
+}
+body #about .serve .content dl dd {
+  margin: 1vh 0;
+  font-size: 1.7rem;
+  font-weight: 900;
+}
+body #about .serve .content dl dt {
+  position: relative;
+  color: #dbdbdb;
+  font-size: 1.4rem;
+  font-weight: 100;
+  margin-left: 4vw;
+}
+body #about .serve .content dl dt::before {
+  content: "\f00c";
+  position: absolute;
+  color: lime;
+  left: -3vw;
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+
+/* end servises */
+/* end about */
+/* start portfolio */
+section.portfolio {
   flex-wrap: wrap;
   gap: 20px;
   align-content: center;
 }
 @media (max-width: 555px) {
-  body section.portfolio {
+  section.portfolio {
     align-content: flex-start;
   }
 }
-body section.portfolio .project {
+section.portfolio .project {
   width: max(300px, 20vw);
   aspect-ratio: 1.6/1;
   font-size: max(11px, 0.7vw);
@@ -566,16 +652,16 @@ body section.portfolio .project {
   -o-border-radius: 1vw;
 }
 @media (max-width: 1050px) {
-  body section.portfolio .project {
+  section.portfolio .project {
     width: 240px;
   }
 }
 @media (max-width: 310px) {
-  body section.portfolio .project {
+  section.portfolio .project {
     width: 180px;
   }
 }
-body section.portfolio .project .details {
+section.portfolio .project .details {
   width: 100%;
   height: 25%;
   position: absolute;
@@ -590,28 +676,28 @@ body section.portfolio .project .details {
   letter-spacing: 0.5vw;
   transform: translateY(100%);
 }
-body section.portfolio .project .details h2 {
+section.portfolio .project .details h2 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   font-size: 2em;
   letter-spacing: 0.2vw;
 }
-body section.portfolio .project .details i {
+section.portfolio .project .details i {
   font-size: 2em;
   padding: 0;
 }
-body section.portfolio .project .details i:hover {
+section.portfolio .project .details i:hover {
   transform: scale(1.4);
   -webkit-transform: scale(1.4);
   -moz-transform: scale(1.4);
   -ms-transform: scale(1.4);
   -o-transform: scale(1.4);
 }
-body section.portfolio .project .details i span {
+section.portfolio .project .details i span {
   transform: translate(-80%, -165%) scale(0.8);
 }
-body section.portfolio .project .details i span::after {
+section.portfolio .project .details i span::after {
   font-size: 1.6em;
   transform: translate(285%, calc(-50% - 1px));
   -webkit-transform: translate(285%, calc(-50% - 1px));
@@ -619,26 +705,27 @@ body section.portfolio .project .details i span::after {
   -ms-transform: translate(285%, calc(-50% - 1px));
   -o-transform: translate(285%, calc(-50% - 1px));
 }
-body section.portfolio .project:hover .details {
+section.portfolio .project:hover .details {
   transform: translateY(0);
   -webkit-transform: translateY(0);
   -moz-transform: translateY(0);
   -ms-transform: translateY(0);
   -o-transform: translateY(0);
 }
-body section.portfolio .project:hover img {
+section.portfolio .project:hover img {
   transform: scale(1.4);
   -webkit-transform: scale(1.4);
   -moz-transform: scale(1.4);
   -ms-transform: scale(1.4);
   -o-transform: scale(1.4);
 }
-body section.portfolio .project img {
+section.portfolio .project img {
   width: 104%;
   aspect-ratio: inherit;
   cursor: pointer;
 }
 
+/* end portfolio */
 .finish {
   width: 100%;
   height: 15vh;

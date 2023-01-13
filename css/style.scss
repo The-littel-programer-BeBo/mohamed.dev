@@ -49,7 +49,7 @@ a{
 }
 
 ::-webkit-scrollbar{
-  width: 1.5vw;
+  width: min(1.5vw,15px);
 }
 ::-webkit-scrollbar-track{
   background: transparent;
@@ -765,4 +765,8 @@ body{
   font-size: 3.5em;
   letter-spacing: .5vw;
   text-align: center;
+}
+/* repairs */
+#eJOY__extension_root{
+  display: none !important;
 }

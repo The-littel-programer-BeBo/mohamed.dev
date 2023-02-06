@@ -12,7 +12,7 @@ let projects = [
   {
     titele:'zatech',
     imgSrc:'image/zatech.png',
-    aHref:'https://the-littel-programer-bebo.github.io/zatech'
+    aHref:'https://the-littel-programer-bebo.github.io/ZATECH/'
   },
   {
     titele:'kasper',
@@ -28,6 +28,16 @@ let projects = [
     titele:'weather',
     imgSrc:'image/weather.png',
     aHref:''
+  },
+  {
+    titele:'my faculty',
+    imgSrc:'image/my faculty.png',
+    aHref:'https://the-littel-programer-bebo.github.io/my-faculty/'
+  },
+  {
+    titele:'bondi',
+    imgSrc:'image/bondi.png',
+    aHref:'https://the-littel-programer-bebo.github.io/bondi/'
   },
   // {
   //   titele:'landing page',

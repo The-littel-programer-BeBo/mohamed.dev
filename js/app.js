@@ -66,7 +66,7 @@ close.forEach(ele=>{
       about.style.overflow = 'overlay'
     })
   }else{
-    ele.addEventListener('click',_=>ele.parentElement.style.cssText = 'transform:translateY(100%)')
+    ele.addEventListener('click',_=>ele.parentElement.style.cssText = 'transform:translateY(110%)')
   }
 })
 

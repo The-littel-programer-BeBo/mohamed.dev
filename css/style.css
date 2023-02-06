@@ -139,10 +139,11 @@ body header {
   text-align: center;
   z-index: 2;
   transition: 1s;
-  -webkit-transition: 1s;
-  -moz-transition: 1s;
-  -ms-transition: 1s;
-  -o-transition: 1s;
+}
+@media (max-width: 460px) {
+  body header {
+    font-size: 3.2rem;
+  }
 }
 body header span {
   -webkit-animation: clean2 1s linear forwards;
@@ -288,7 +289,7 @@ body section.page {
   background-color: #000;
   z-index: 2;
   overflow: hidden overlay;
-  transform: translateY(100%);
+  transform: translateY(110%);
 }
 body section.page .close {
   position: fixed;
@@ -314,7 +315,7 @@ body #about {
 }
 body #about > section {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
@@ -343,7 +344,7 @@ body #about > section .text {
   padding: 0 2vw;
 }
 body #about > section .text p {
-  line-height: max(5vh, 5vw);
+  line-height: max(4.5vh, 4.5vw);
   letter-spacing: 4px;
   font-size: 2vw;
 }
@@ -564,7 +565,7 @@ body #about .serve {
 }
 body #about .serve .content {
   width: 80vw;
-  height: 90vh;
+  height: 96vh;
   position: absolute;
   display: flex;
   flex-direction: column;

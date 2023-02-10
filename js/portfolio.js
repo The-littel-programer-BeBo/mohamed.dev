@@ -2,22 +2,22 @@ let projects = [
   {
     titele:'pomodoro',
     imgSrc:'image/pomodoro.png',
-    aHref:'https://the-littel-programer-bebo.github.io/pomodoro'
+    aHref:'https://dev-mohamed-eid.github.io/Pomodoro/'
   },
   {
     titele:'leon',
     imgSrc:'image/leon.png',
-    aHref:'https://the-littel-programer-bebo.github.io/Template01'
+    aHref:'https://dev-mohamed-eid.github.io/Leon-Landing-page/'
   },
   {
     titele:'zatech',
     imgSrc:'image/zatech.png',
-    aHref:'https://the-littel-programer-bebo.github.io/ZATECH/'
+    aHref:'https://dev-mohamed-eid.github.io/ZATECH/'
   },
   {
     titele:'kasper',
     imgSrc:'image/kasper.png',
-    aHref:'https://the-littel-programer-bebo.github.io/Template02'
+    aHref:'https://dev-mohamed-eid.github.io/Kasper-landing-page/'
   },
   {
     titele:'skin cancer',
@@ -32,12 +32,17 @@ let projects = [
   {
     titele:'my faculty',
     imgSrc:'image/my faculty.png',
-    aHref:'https://the-littel-programer-bebo.github.io/my-faculty/'
+    aHref:'https://dev-mohamed-eid.github.io/re-coding-my-faculty-page'
   },
   {
     titele:'bondi',
     imgSrc:'image/bondi.png',
-    aHref:'https://the-littel-programer-bebo.github.io/bondi/'
+    aHref:'https://dev-mohamed-eid.github.io/Bondi/'
+  },
+  {
+    titele:'conference',
+    imgSrc:'image/conference.png',
+    aHref:'https://dev-mohamed-eid.github.io/CONFERENCE/'
   },
   // {
   //   titele:'landing page',

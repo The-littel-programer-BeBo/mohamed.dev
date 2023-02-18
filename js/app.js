@@ -1,11 +1,40 @@
 'use strict'
+let backgroundSpans;
 // background animation
-setInterval(() => {
+let backgroundAnimation = setInterval(() => {
   let random = (Math.random() * 100).toFixed(0)
   let random1 = (Math.random() * 10).toFixed(0)
   background.insertAdjacentHTML('beforeend', `<span style='left:${random}%;  animation-duration:${random1}s;'>.</span>`)
-  setTimeout(() => background.removeChild(background.firstChild), 50000)
 },200)
+setTimeout(() =>clearInterval(backgroundAnimation),28000)
+
+// mood
+mood.addEventListener('click',()=>{
+  let backgroundSpans = document.querySelectorAll('#background span')
+  mood.classList.toggle('light')
+  if(mood.classList.contains('light')){
+    document.querySelector(':root').style.setProperty('--main', '#fff')
+    document.querySelector(':root').style.setProperty('--hover', '#000')
+    document.querySelector(':root').style.setProperty('--span-size', '')
+    for(let i=0;i < backgroundSpans.length;i++){
+      if(i < backgroundSpans.length/4){
+        backgroundSpans[i].textContent = ''
+        let size = parseInt(backgroundSpans[i].style.animationDuration)
+        backgroundSpans[i].style.fontSize = 
+        size >= 3 ? size + 'rem' : '3rem'
+    }else{
+        backgroundSpans[i].style.fontSize = '0'
+      }
+    }
+  }else{
+    document.querySelector(':root').style.setProperty('--main', '#000')
+    document.querySelector(':root').style.setProperty('--hover', '#fff')
+    backgroundSpans.forEach(span=> span.textContent = '.')
+    for(let i=0;i < backgroundSpans.length;i++){
+      backgroundSpans[i].style.fontSize = ''
+    }
+  }
+})
 
 // add attribute to a
 const anchors = document.getElementsByTagName('a')
@@ -17,6 +46,11 @@ for(let a of anchors){
 const otherSocial = document.querySelectorAll('.otherSocial');
 otherSocial.forEach(ele=>{
   ele.addEventListener('click',_=>ele.nextElementSibling.style.cssText = 'transform:unset')
+})
+const aboutBtn = document.querySelector('.about-section>i');
+const textAndImg = document.querySelectorAll('#about .text,#about .img');
+aboutBtn.addEventListener('click',()=>{
+  textAndImg.forEach(e=>e.classList.add('move'))
 })
 
 // social button
@@ -66,7 +100,10 @@ close.forEach(ele=>{
       about.style.overflow = 'overlay'
     })
   }else{
-    ele.addEventListener('click',_=>ele.parentElement.style.cssText = 'transform:translateY(110%)')
+    ele.addEventListener('click',_=>{
+      ele.parentElement.style.cssText = 'transform:translateY(110%)'
+      textAndImg.forEach(e=>e.classList.remove('move'))
+    })
   }
 })
 
@@ -84,6 +121,7 @@ about.addEventListener('scroll',_=>{
   }else{
     skills.classList.remove('move')
   }
+
 })
 
 // service button

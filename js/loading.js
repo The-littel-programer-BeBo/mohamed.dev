@@ -1,7 +1,14 @@
+if(sessionStorage.getItem("opened")){
+  document.body.classList.add('show')
+  intro.style.cssText = 'transition:none;top:3%'
+  typeMsg('front-end developer.',intro,false)
+}else{
+  typeMsg('Welcome to my website.',intro)
+}
+
 // animation typing
-function typeMsg(massage, ele){
-  intro.classList.remove('clean')
-  test = false
+function typeMsg(massage, ele, b=true){
+  ele.classList.remove('clean')
   let newMsg = massage.split('')
   let x = 0
   ele.innerHTML = ''
@@ -9,14 +16,13 @@ function typeMsg(massage, ele){
     if (x < newMsg.length) {
       ele.innerHTML +=`<span data-text='${newMsg[x]}' style='animation-delay:${x / 100}s;'>${newMsg[x] == ' ' ? '&nbsp;' : newMsg[x]}</span>`
       x++
-    } else {
+    } else if(b){
       clearInterval(type)
       enter.next()
     }
-  }, 100)
+  },100)
 }
 
-typeMsg('Welcome to my website.',intro)
 function* chating(){
   yield clean()
   yield typeMsg('i\'m mohamed and i\'m ...',intro)
@@ -33,5 +39,6 @@ function clean(){
 
 function finshed(){
   intro.style.cssText = 'top:3%'
-  document.querySelectorAll('body>*:not(header,script)').forEach(e=>e.style.opacity = '1')
+  document.body.classList.add('show')
+  sessionStorage.setItem("opened", true);
 }

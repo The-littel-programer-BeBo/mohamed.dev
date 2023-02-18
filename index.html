@@ -14,15 +14,21 @@
   <header id="intro"></header>
   <!-- script loading -->
   <script src="js/loading.js"></script>
-  
   <!-- start background -->
   <div id="background"></div>
   <!-- end background -->
 
+  <!-- start mood -->
+  <div id="mood" class="mood">
+    <i id="dark" class="fa-solid fa-moon mood-btn"></i>
+    <i id="light" class="fa-solid fa-sun mood-btn"></i>
+  </div>
+  <!-- end mood -->
+
   <!-- start about -->
-  <section>
+  <section class="about-section">
     <i class="fa-regular fa-address-card otherSocial explain">
-      <span>about me .</span>
+      <span>about me</span>
     </i>
     <section id="about" class="page">
       <i class="fa-solid fa-xmark close"></i>
@@ -46,7 +52,9 @@
         <div class="text">
           <p>
             I study in the Faculty of Science majoring in computer science.<br/>
-            I obtained a certificate from the Ministry of Communications and Information Technology in cooperation with Udacity, attesting to my experience in the field of website development, with an expert degree.
+            I obtained a certificate from
+            <!-- the Ministry of Communications and Information Technology in cooperation with  -->
+            Udacity, attesting to my experience in the field of website development, with an expert degree.
           </p>
         </div>
       </section>
@@ -93,6 +101,10 @@
           <p>
             get fast hosting from hostinger just for 4$/month.
           </p>
+          <div class="shop">
+            <lottie-player src="https://lottie.host/4c83829f-f988-4285-a0c4-5c0b5c32bd4b/GHcrxBuO8w.json" background="transparent"  speed="1"  style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+            <a href="hosting.html" data-text="shop now">shop now</a>
+          </div>
           <dl>
             <dd>Top feature</dd>
               <dt>you don't need plans yearly , you can pay monthly , and stop when you want</dt>
@@ -114,6 +126,9 @@
               <dt>Managed WordPress</dt>
               <dt>WordPress Acceleration</dt>
           </dl>
+          <div class="shop">
+            <a href="hosting.html"  data-text="shop now">shop now</a>
+          </div>
         </div>
       </div>
       <section class="servises">
@@ -132,7 +147,7 @@
   <!-- start social -->
   <section class="social">
     <i class="fa-solid fa-icons explain" id="social">
-      <span>social media and contact .</span>
+      <span>social media and contact</span>
     </i>
     <a title="facebook" href="https://www.facebook.com/profile.php?id=100008513971718">
       <i class="fa-brands fa-facebook i"></i>
@@ -143,9 +158,9 @@
     <a title="github" href="https://github.com/dev-mohamed-Eid">
       <i class="fa-brands fa-github i"></i>
     </a>
-    <a title="codepen" href="https://codepen.io/the-littel-programer-bebo">
+    <!-- <a title="codepen" href="https://codepen.io/the-littel-programer-bebo">
       <i class="fa-brands fa-codepen i"></i>
-    </a>
+    </a> -->
     <a title="mail me" href="mailto: [beboalgenral@gmail.com]?subject=&body=">
       <i class="fa-solid fa-envelope i"></i>
     </a>
@@ -158,7 +173,7 @@
   <!-- start portfolio -->
   <section class="portfolio-section">
     <i class="fa-regular fa-image otherSocial explain">
-      <span>my portfolio .</span>
+      <span>my portfolio</span>
     </i>
     <section class="page portfolio">
       <i class="fa-solid fa-xmark close"></i>
@@ -167,5 +182,7 @@
   <!-- end portfolio -->
   <script src="js/app.js"></script>
   <script src="js/portfolio.js"></script>
+  <!-- looti -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </body>
 </html>

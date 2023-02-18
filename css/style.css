@@ -1,6 +1,11 @@
 /*--start variables--*/
 :root {
-  --background-color:#000;
+  --main:#000;
+  --hover:#fff;
+  --background-color:var(--main);
+  --background-hover:var(--hover);
+  --color:var(--hover);
+  --color-hover:var(--main);
 }
 
 /*--end variables--*/
@@ -15,13 +20,8 @@
   transition: 500ms ease-out;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
   cursor: default;
-  -webkit-transition: 500ms ease-out;
-  -moz-transition: 500ms ease-out;
-  -ms-transition: 500ms ease-out;
-  -o-transition: 500ms ease-out;
 }
 
 html,
@@ -30,8 +30,8 @@ body {
   height: 100vh;
   scroll-behavior: smooth;
   background-color: var(--background-color);
-  color: #fff;
-  font-size: max(1vw, 1vh);
+  color: var(--color);
+  font-size: min(1vw, 1vh);
   overflow: hidden;
 }
 
@@ -46,12 +46,13 @@ ul {
 
 a {
   text-decoration: none;
-  color: #fff;
+  color: var(--color);
   cursor: pointer;
 }
 
 ::-webkit-scrollbar {
   width: min(1.5vw, 15px);
+  width: 0;
 }
 
 ::-webkit-scrollbar-track {
@@ -59,13 +60,9 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #000;
+  background-color: var(--background-color);
   box-shadow: inset 0.5px 0px 0px 1px #444;
   border-radius: 10vw;
-  -webkit-border-radius: 10vw;
-  -moz-border-radius: 10vw;
-  -ms-border-radius: 10vw;
-  -o-border-radius: 10vw;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -97,7 +94,12 @@ body {
   }
 }
 body > *:not(header, #background) {
+  visibility: hidden;
   opacity: 0;
+}
+body.show > *:not(header, #background) {
+  visibility: visible;
+  opacity: 1;
 }
 body #background {
   width: 100%;
@@ -110,19 +112,37 @@ body #background {
 body #background span {
   position: absolute;
   bottom: -10vh;
-  color: white;
+  color: #fff;
+  text-shadow: 0 0 5px black;
   animation: go linear 0.5s infinite;
   -webkit-animation: go linear 0.5s infinite;
-}
-@-webkit-keyframes go {
-  to {
-    bottom: 110vh;
-  }
 }
 @keyframes go {
   to {
     bottom: 110vh;
   }
+}
+body .mood {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  transform: rotate(0deg);
+  transition: 1.6s linear;
+  cursor: pointer;
+  transform: translate(50%);
+  z-index: 2;
+}
+body .mood.light {
+  transform: translate(50%) rotate(-180deg);
+}
+body .mood .mood-btn {
+  cursor: pointer;
+}
+body .mood #dark {
+  align-self: flex-end;
 }
 body header {
   width: 94%;
@@ -138,33 +158,17 @@ body header {
   text-transform: uppercase;
   text-align: center;
   z-index: 2;
-  transition: 1s;
+  transition: 1.2s;
 }
 @media (max-width: 460px) {
   body header {
-    font-size: 3.2rem;
+    font-size: 3rem;
   }
 }
 body header span {
-  -webkit-animation: clean2 1s linear forwards;
-          animation: clean2 1s linear forwards;
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
+  animation: clean2 1s linear forwards;
+  animation-play-state: paused;
   display: inline-block;
-}
-@-webkit-keyframes clean2 {
-  0% {
-    opacity: 1;
-    transform: translateY(0vh) rotate(0deg);
-  }
-  100% {
-    opacity: 0.1;
-    transform: translateY(-50vh) rotate(-350deg);
-    -webkit-transform: translateY(-50vh) rotate(-350deg);
-    -moz-transform: translateY(-50vh) rotate(-350deg);
-    -ms-transform: translateY(-50vh) rotate(-350deg);
-    -o-transform: translateY(-50vh) rotate(-350deg);
-  }
 }
 @keyframes clean2 {
   0% {
@@ -181,8 +185,7 @@ body header span {
   }
 }
 body header.clean span {
-  -webkit-animation-play-state: running;
-          animation-play-state: running;
+  animation-play-state: running;
 }
 body .social {
   border-radius: 50%;
@@ -203,24 +206,19 @@ body .social i:not(#social) {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 0;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
 }
 body i {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   aspect-ratio: 1;
   font-size: 5em;
-  padding: 1vw;
+  padding: 1.3vw;
   display: flex !important;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   border-radius: 50%;
-  transition: 1s;
+  transition: 1.2s;
 }
 body i::before {
   cursor: pointer;
@@ -228,13 +226,9 @@ body i::before {
 body .social i:hover,
 body .servises i:hover,
 body .otherSocial:hover {
-  color: var(--background-color);
-  background-color: #fff !important;
+  color: var(--color-hover);
+  background-color: var(--background-hover) !important;
   transition: 300ms !important;
-  -webkit-transition: 300ms !important;
-  -moz-transition: 300ms !important;
-  -ms-transition: 300ms !important;
-  -o-transition: 300ms !important;
 }
 body .explain {
   position: relative;
@@ -244,7 +238,6 @@ body .explain:hover span {
   opacity: 1;
 }
 body .explain span {
-  width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   position: absolute;
@@ -257,21 +250,18 @@ body .explain span {
   display: block;
   visibility: hidden;
   opacity: 0;
-  padding: 0.5vh 0.5vw;
-  background: #000;
-  color: #fff;
-  border: 1px solid #fff;
+  padding: 0.6vh 0.6vw;
+  background: var(--background-hover);
+  color: var(--color-hover);
   border-radius: 0.6vw;
-  transition: inherit 0;
 }
 body .explain span::after {
   content: "\f0dd";
   position: absolute;
   left: 50%;
   top: 100%;
-  color: #000;
+  color: var(--color);
   font-size: 20px;
-  text-shadow: 0px 1px 0 #fff;
   transform: translate(-50%, calc(-50% - 2px));
 }
 body section {
@@ -286,7 +276,7 @@ body section.page {
   top: 0;
   left: 0;
   padding: 7vh 4vw 3vh;
-  background-color: #000;
+  background-color: var(--background-color);
   z-index: 2;
   overflow: hidden overlay;
   transform: translateY(110%);
@@ -296,7 +286,7 @@ body section.page .close {
   top: 0%;
   right: 2%;
   font-size: 3em;
-  z-index: 9;
+  z-index: 3;
 }
 body section.page .close:hover {
   transform: scale(1.5);
@@ -316,7 +306,6 @@ body #about {
 body #about > section {
   width: 100%;
   height: 100vh;
-  height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
   display: flex;
@@ -326,11 +315,11 @@ body #about > section {
 }
 @media (max-width: 700px) {
   body #about > section {
-    margin-bottom: 7vh;
+    margin-bottom: 5vh;
     flex-direction: column;
   }
   body #about > section:nth-child(even) {
-    margin-bottom: 7vh;
+    margin-bottom: 5vh;
     flex-direction: column-reverse;
   }
 }
@@ -342,6 +331,13 @@ body #about > section > div {
 }
 body #about > section .text {
   padding: 0 2vw;
+  transform: translateX(110%);
+}
+body #about > section .text:nth-child(1) {
+  transform: translateX(-110%);
+}
+body #about > section .text.move {
+  transform: translateX(0%);
 }
 body #about > section .text p {
   line-height: max(4.5vh, 4.5vw);
@@ -351,9 +347,17 @@ body #about > section .text p {
 body #about > section .text p a {
   text-decoration: underline;
 }
+body #about > section .img {
+  transform: translateX(110%);
+}
+body #about > section .img:nth-child(1) {
+  transform: translateX(-110%);
+}
+body #about > section .img.move {
+  transform: translateX(0%);
+}
 body #about > section .img img {
   width: 100%;
-  aspect-ratio: 2/3;
   max-height: 100%;
 }
 body #about .skills {
@@ -367,13 +371,13 @@ body #about .skills h2 {
   font-size: 10em;
   letter-spacing: 5vw;
   position: absolute;
-  color: #000;
+  color: var(--color-hover);
   text-shadow: 0 0 5px #aaa;
 }
 body #about .skills hr {
   width: 0%;
   height: 0vh;
-  background: #fff;
+  background: var(--background-hover);
   width: 1VW;
   height: 1vw;
   border-radius: 50%;
@@ -392,42 +396,10 @@ body #about .skills div {
 }
 body #about .skills div i {
   transform: translateY(25vh);
-  -webkit-transform: translateY(25vh);
-  -moz-transform: translateY(25vh);
-  -ms-transform: translateY(25vh);
-  -o-transform: translateY(25vh);
 }
 body #about .skills.move hr {
   animation: jump 3s ease-in-out 0.3s forwards;
   -webkit-animation: jump 3s ease-in-out 0.3s forwards;
-}
-@-webkit-keyframes jump {
-  15% {
-    height: 1vw;
-    width: 1vw;
-    transform: translateY(-6vh);
-    -webkit-transform: translateY(-6vh);
-    -moz-transform: translateY(-6vh);
-    -ms-transform: translateY(-6vh);
-    -o-transform: translateY(-6vh);
-  }
-  30% {
-    height: 0.5vw;
-    width: 0.5vw;
-    transform: translateY(0vh);
-    -webkit-transform: translateY(0vh);
-    -moz-transform: translateY(0vh);
-    -ms-transform: translateY(0vh);
-    -o-transform: translateY(0vh);
-  }
-  35% {
-    height: 0vw;
-    width: 0vw;
-  }
-  100% {
-    height: 0;
-    width: 100%;
-  }
 }
 @keyframes jump {
   15% {
@@ -459,32 +431,14 @@ body #about .skills.move hr {
 }
 body #about .skills.move i {
   transition: 1s 3s;
-  -webkit-transition: 1s 3s;
-  -moz-transition: 1s 3s;
-  -ms-transition: 1s 3s;
-  -o-transition: 1s 3s;
   transform: translateY(15vh);
-  -webkit-transform: translateY(15vh);
-  -moz-transform: translateY(15vh);
-  -ms-transform: translateY(15vh);
-  -o-transform: translateY(15vh);
   --a-duration:1.8s;
   --a-delay:4s;
   animation: move var(--a-duration) linear var(--a-delay) infinite alternate;
   -webkit-animation: move var(--a-duration) linear var(--a-delay) infinite alternate;
 }
 body #about .skills.move i:nth-child(even) {
-  -webkit-animation-delay: calc(var(--a-duration) + var(--a-delay));
-          animation-delay: calc(var(--a-duration) + var(--a-delay));
-}
-@-webkit-keyframes move {
-  to {
-    transform: translateY(-15vh);
-    -webkit-transform: translateY(-15vh);
-    -moz-transform: translateY(-15vh);
-    -ms-transform: translateY(-15vh);
-    -o-transform: translateY(-15vh);
-  }
+  animation-delay: calc(var(--a-duration) + var(--a-delay));
 }
 @keyframes move {
   to {
@@ -509,30 +463,26 @@ body #about .servises h2 {
   display: flex;
   align-items: center;
   text-align: center;
-  text-shadow: 0 0 5px #fff;
-  color: #000;
-  background-color: #000;
+  text-shadow: 0 0 5px var(--color);
+  color: var(--color-hover);
+  background-color: var(--background-color);
   font-size: 5em;
   letter-spacing: 3rem;
   border-radius: var(--width);
   cursor: pointer;
   z-index: 1;
-  -webkit-border-radius: var(--width);
-  -moz-border-radius: var(--width);
-  -ms-border-radius: var(--width);
-  -o-border-radius: var(--width);
 }
 body #about .servises h2.active {
   width: calc(var(--width) * 2) !important;
   padding: 2.2rem;
   letter-spacing: 5rem;
-  color: #000;
-  background-color: #fff;
+  color: var(--color-hover);
+  background-color: var(--color-hover);
   overflow: hidden;
 }
 body #about .servises h2:hover {
-  color: #000;
-  background-color: #fff;
+  color: var(--color-hover);
+  background-color: var(--background-hover);
 }
 body #about .servises i {
   padding: 1.4vw;
@@ -542,10 +492,6 @@ body #about .servises i {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
 }
 body #about .serve {
   width: 100vw;
@@ -556,27 +502,21 @@ body #about .serve {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.75);
   z-index: 3;
-  -webkit-transform: translate(-50%, -50%) scale(0);
-  -moz-transform: translate(-50%, -50%) scale(0);
-  -ms-transform: translate(-50%, -50%) scale(0);
-  -o-transform: translate(-50%, -50%) scale(0);
 }
 body #about .serve .content {
   width: 80vw;
-  height: 96vh;
+  height: 94vh;
   position: absolute;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  padding: 1vh 3vw;
-  background-color: #1b1b1b;
+  justify-content: flex-start;
+  padding: 4vh 4vw;
+  background-color: #171717;
+  color: #fff;
   border-radius: 2vw;
-  -webkit-border-radius: 2vw;
-  -moz-border-radius: 2vw;
-  -ms-border-radius: 2vw;
-  -o-border-radius: 2vw;
+  overflow-y: auto;
 }
 body #about .serve .content i.popup {
   top: 6%;
@@ -595,8 +535,57 @@ body #about .serve .content h2 i {
 body #about .serve .content p {
   font-size: 2rem;
   letter-spacing: 0.8rem;
-  line-height: 4vh;
+  line-height: 4.5vh;
   text-align: center;
+}
+body #about .serve .content .shop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: right;
+}
+body #about .serve .content .shop a {
+  padding: 1vh 1.5vw;
+  margin: 0 1vw 4vh 0;
+  align-self: flex-end;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4rem;
+  border: 0.2rem solid #fff;
+  border-radius: 0.3rem;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  background-color: #fff;
+  transform: translate(-1vw, -100%);
+}
+body #about .serve .content .shop a::before, body #about .serve .content .shop a::after {
+  content: attr(data-text);
+  width: 100%;
+  height: 100%;
+  padding: inherit;
+  position: absolute;
+  top: 0%;
+  left: 0;
+  color: #000;
+  cursor: pointer;
+  transition: 500ms top;
+  background-color: #fff;
+}
+body #about .serve .content .shop a::after {
+  top: 100%;
+  color: #fff;
+  background: black;
+}
+body #about .serve .content .shop a:hover::before {
+  top: -100%;
+}
+body #about .serve .content .shop a:hover::after {
+  top: 0%;
+}
+body #about .serve .content .shop:nth-of-type(2) {
+  justify-content: flex-end;
 }
 body #about .serve .content dl {
   letter-spacing: 0.5rem;
@@ -617,7 +606,7 @@ body #about .serve .content dl dt {
 body #about .serve .content dl dt::before {
   content: "\f00c";
   position: absolute;
-  color: lime;
+  color: #16b9f9;
   left: -3vw;
   font-size: 1.8rem;
   font-weight: 900;
@@ -631,7 +620,7 @@ section.portfolio {
   gap: 20px;
   align-content: center;
 }
-@media (max-width: 555px) {
+@media (max-width: 826px) {
   section.portfolio {
     align-content: flex-start;
   }
@@ -644,13 +633,9 @@ section.portfolio .project {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 0.3vw solid #fff;
+  border: 0.3vw solid var(--color);
   border-radius: 1vw;
   overflow: hidden;
-  -webkit-border-radius: 1vw;
-  -moz-border-radius: 1vw;
-  -ms-border-radius: 1vw;
-  -o-border-radius: 1vw;
 }
 @media (max-width: 1050px) {
   section.portfolio .project {
@@ -678,7 +663,6 @@ section.portfolio .project .details {
   transform: translateY(100%);
 }
 section.portfolio .project .details h2 {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   font-size: 2em;
@@ -687,13 +671,10 @@ section.portfolio .project .details h2 {
 section.portfolio .project .details i {
   font-size: 2em;
   padding: 0;
+  color: #fff;
 }
 section.portfolio .project .details i:hover {
   transform: scale(1.4);
-  -webkit-transform: scale(1.4);
-  -moz-transform: scale(1.4);
-  -ms-transform: scale(1.4);
-  -o-transform: scale(1.4);
 }
 section.portfolio .project .details i span {
   transform: translate(-80%, -165%) scale(0.8);
@@ -701,24 +682,12 @@ section.portfolio .project .details i span {
 section.portfolio .project .details i span::after {
   font-size: 1.6em;
   transform: translate(285%, calc(-50% - 1px));
-  -webkit-transform: translate(285%, calc(-50% - 1px));
-  -moz-transform: translate(285%, calc(-50% - 1px));
-  -ms-transform: translate(285%, calc(-50% - 1px));
-  -o-transform: translate(285%, calc(-50% - 1px));
 }
 section.portfolio .project:hover .details {
   transform: translateY(0);
-  -webkit-transform: translateY(0);
-  -moz-transform: translateY(0);
-  -ms-transform: translateY(0);
-  -o-transform: translateY(0);
 }
 section.portfolio .project:hover img {
   transform: scale(1.4);
-  -webkit-transform: scale(1.4);
-  -moz-transform: scale(1.4);
-  -ms-transform: scale(1.4);
-  -o-transform: scale(1.4);
 }
 section.portfolio .project img {
   width: 104%;

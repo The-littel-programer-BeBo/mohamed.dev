@@ -13,11 +13,10 @@ mood.addEventListener('click',()=>{
   let backgroundSpans = document.querySelectorAll('#background span')
   mood.classList.toggle('light')
   if(mood.classList.contains('light')){
-    document.querySelector(':root').style.setProperty('--main', '#fff')
+    document.querySelector(':root').style.setProperty('--main', '#eee')
     document.querySelector(':root').style.setProperty('--hover', '#000')
-    document.querySelector(':root').style.setProperty('--span-size', '')
     for(let i=0;i < backgroundSpans.length;i++){
-      if(i < backgroundSpans.length/4){
+      if(i < backgroundSpans.length/3){
         backgroundSpans[i].textContent = ''
         let size = parseInt(backgroundSpans[i].style.animationDuration)
         backgroundSpans[i].style.fontSize = 

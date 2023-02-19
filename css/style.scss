@@ -112,7 +112,7 @@ body{
 
   // start mood
   .mood{
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     display: flex;
@@ -121,10 +121,10 @@ body{
     transform: rotate(0deg);
     transition: 1.6s linear;
     cursor: pointer;
-    transform: translate(50%);
+    transform: translateX(50%);
     z-index: 2;
     &.light{
-      transform:translate(50%) rotate(-180deg);
+      transform:translateX(50%) rotate(-180deg);
     }
     .mood-btn{
       cursor: pointer;
@@ -220,7 +220,7 @@ body{
     width: fit-content;
     aspect-ratio: 1;
     font-size: 5em;
-    padding: 1.3vw;
+    padding: 1.2rem;
     display: flex !important;
     justify-content: center;
     align-items: center;
@@ -262,7 +262,7 @@ body{
       display: block;
       visibility: hidden;
       opacity: 0;
-      padding: .6vh .6vw;
+      padding: .7vh .8vw;
       background: var(--background-hover);
       color: var(--color-hover);
       // border: 1px solid var(--background-hover);
@@ -274,6 +274,7 @@ body{
         top: 100%;
         color: var(--color);
         font-size: 20px;
+        font-size: 3.2rem;
         // text-shadow: 0px 1px 0 var(--color);
         transform: translate(-50%, calc(-50% - 2px));
       }
@@ -302,9 +303,9 @@ body{
 
     .close{
       position: fixed;
-      top: 0%;
-      right: 2%;
-      font-size: 3em;
+      top: 10px;
+      right: 15px;
+      font-size: 4em;
       z-index: 3;
       &:hover{
         transform: scale(1.5);
@@ -384,6 +385,7 @@ body{
       position: relative;
       flex-direction: column;
       margin-top: 2vh;
+      margin-bottom: -7vh;
       row-gap: 0;
       h2{
         font-size: 10em;
@@ -484,7 +486,7 @@ body{
       justify-content: center;
       position: relative;
       overflow-x: hidden;
-
+      margin-bottom: 0;
       h2{
         --width:4rem;
         height: calc(var(--width)*2);
@@ -573,10 +575,11 @@ body{
           justify-content: space-between;
           align-items: center;
           text-align: right;
+          margin-bottom: -3vh;
           a{
             padding: 1vh 1.5vw;
-            margin:0 1vw 4vh 0;
             align-self: flex-end;
+            flex-shrink: 0;
             font-size: 1.6rem;
             font-weight: 600;
             text-transform: uppercase;
@@ -588,6 +591,9 @@ body{
             display: inline-block;
             background-color:#fff;
             transform: translate(-1vw, -100%);
+            &.second{
+              transform: translate(-1vw, 40%);
+            }
             &::before,
             &::after{
               content: attr(data-text);
@@ -618,6 +624,7 @@ body{
           }
           &:nth-of-type(2){
             justify-content: flex-end;
+            margin-bottom: 0;
           }
         }
         dl{

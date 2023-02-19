@@ -123,7 +123,7 @@ body #background span {
   }
 }
 body .mood {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   display: flex;
@@ -132,11 +132,11 @@ body .mood {
   transform: rotate(0deg);
   transition: 1.6s linear;
   cursor: pointer;
-  transform: translate(50%);
+  transform: translateX(50%);
   z-index: 2;
 }
 body .mood.light {
-  transform: translate(50%) rotate(-180deg);
+  transform: translateX(50%) rotate(-180deg);
 }
 body .mood .mood-btn {
   cursor: pointer;
@@ -212,7 +212,7 @@ body i {
   width: fit-content;
   aspect-ratio: 1;
   font-size: 5em;
-  padding: 1.3vw;
+  padding: 1.2rem;
   display: flex !important;
   justify-content: center;
   align-items: center;
@@ -250,7 +250,7 @@ body .explain span {
   display: block;
   visibility: hidden;
   opacity: 0;
-  padding: 0.6vh 0.6vw;
+  padding: 0.7vh 0.8vw;
   background: var(--background-hover);
   color: var(--color-hover);
   border-radius: 0.6vw;
@@ -262,6 +262,7 @@ body .explain span::after {
   top: 100%;
   color: var(--color);
   font-size: 20px;
+  font-size: 3.2rem;
   transform: translate(-50%, calc(-50% - 2px));
 }
 body section {
@@ -283,9 +284,9 @@ body section.page {
 }
 body section.page .close {
   position: fixed;
-  top: 0%;
-  right: 2%;
-  font-size: 3em;
+  top: 10px;
+  right: 15px;
+  font-size: 4em;
   z-index: 3;
 }
 body section.page .close:hover {
@@ -365,6 +366,7 @@ body #about .skills {
   position: relative;
   flex-direction: column;
   margin-top: 2vh;
+  margin-bottom: -7vh;
   row-gap: 0;
 }
 body #about .skills h2 {
@@ -455,6 +457,7 @@ body #about .servises {
   justify-content: center;
   position: relative;
   overflow-x: hidden;
+  margin-bottom: 0;
 }
 body #about .servises h2 {
   --width:4rem;
@@ -543,11 +546,12 @@ body #about .serve .content .shop {
   justify-content: space-between;
   align-items: center;
   text-align: right;
+  margin-bottom: -3vh;
 }
 body #about .serve .content .shop a {
   padding: 1vh 1.5vw;
-  margin: 0 1vw 4vh 0;
   align-self: flex-end;
+  flex-shrink: 0;
   font-size: 1.6rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -559,6 +563,9 @@ body #about .serve .content .shop a {
   display: inline-block;
   background-color: #fff;
   transform: translate(-1vw, -100%);
+}
+body #about .serve .content .shop a.second {
+  transform: translate(-1vw, 40%);
 }
 body #about .serve .content .shop a::before, body #about .serve .content .shop a::after {
   content: attr(data-text);
@@ -586,6 +593,7 @@ body #about .serve .content .shop a:hover::after {
 }
 body #about .serve .content .shop:nth-of-type(2) {
   justify-content: flex-end;
+  margin-bottom: 0;
 }
 body #about .serve .content dl {
   letter-spacing: 0.5rem;

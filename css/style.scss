@@ -573,12 +573,11 @@ body{
         .shop{
           display: flex;
           justify-content: space-between;
-          align-items: center;
+          align-items: flex-end;
           text-align: right;
-          margin-bottom: -3vh;
+          // margin-bottom: -3vh;
           a{
             padding: 1vh 1.5vw;
-            align-self: flex-end;
             flex-shrink: 0;
             font-size: 1.6rem;
             font-weight: 600;
@@ -657,14 +656,10 @@ body{
       &[data-serve="site"]{
         .shop{
           justify-content: space-around;
+          align-items: center;
+          margin-top: -10vh;
           a{
-            transform: translateY(-300%);
-            &:nth-of-type(2){
-              transform: translateY(-400%);
-            }
-          }
-          &:nth-of-type(2){
-            justify-content: space-around;
+            margin-top: 32vw;
           }
         }
       }

@@ -544,13 +544,11 @@ body #about .serve .content p {
 body #about .serve .content .shop {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   text-align: right;
-  margin-bottom: -3vh;
 }
 body #about .serve .content .shop a {
   padding: 1vh 1.5vw;
-  align-self: flex-end;
   flex-shrink: 0;
   font-size: 1.6rem;
   font-weight: 600;
@@ -621,15 +619,11 @@ body #about .serve .content dl dt::before {
 }
 body #about .serve[data-serve=site] .shop {
   justify-content: space-around;
+  align-items: center;
+  margin-top: -10vh;
 }
 body #about .serve[data-serve=site] .shop a {
-  transform: translateY(-300%);
-}
-body #about .serve[data-serve=site] .shop a:nth-of-type(2) {
-  transform: translateY(-400%);
-}
-body #about .serve[data-serve=site] .shop:nth-of-type(2) {
-  justify-content: space-around;
+  margin-top: 32vw;
 }
 
 /* end servises */

@@ -620,7 +620,6 @@ body #about .serve .content dl dt::before {
 body #about .serve[data-serve=site] .shop {
   justify-content: space-around;
   align-items: center;
-  margin-top: -10vh;
 }
 body #about .serve[data-serve=site] .shop a {
   margin-top: 32vw;
